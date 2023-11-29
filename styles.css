@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+$red : #cb2127;
+$green : #2ecc71;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  &:before {
+    content: "";
+    display: block;
+    position:fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: url("http://oi66.tinypic.com/23mvj48.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    filter: blur(2px);
+    z-index: -1;
+  }
+  
+}
+
+.quiz-container{
+  width: 450px;
+  color: white;
+  font-size: 110%;
+  margin: auto;
+  
+  h1 {
+    text-align: center;
+    color: $red;
+    margin-bottom: 10px;
+  }
+  
+  .box {
+    padding: 10px 15px;
+  }
+  
+  .question {
+    background-color: $red;
+    margin-bottom: 25px;
+    font-size: 115%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: -15px;
+      left: 35px;
+      width: 0; 
+      height: 0; 
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+
+      border-top: 15px solid $red;
+    }
+    
+    span {
+      background-color: $red;
+      color: white;
+      display: block;
+      float: left;
+      margin-left: -15px;
+      margin-top: -10px;
+      margin-right: 0px;
+      padding: 10px 10px;
+      text-align: center;
+      text-transform: uppercase;
+      width: 40px;
+    }
+  }
+  
+  .answers {
+    padding-left: 0;
+    list-style-type: none;
+    
+    .answer {
+      background-color: #fff;
+      color: $red;
+      margin-bottom: 10px;
+      position: relative;
+      
+      &:hover, &.active{
+        cursor: pointer;
+        color: $green;
+        
+        span:not([class^="checkmark"]) {
+          background-color: $green;
+        }
+      }
+      
+      &.active span.checkmark {
+        background-color: #fff;
+        position: absolute;
+        top: 8px;
+        right: 20px;
+        font-size: 120%;
+      }
+      
+        span:not([class^="checkmark"]) {
+          background-color: $red;
+          color: white;
+          display: block;
+          float: left;
+          margin-left: -15px;
+          margin-top: - 10px;
+          margin-right: 20px;
+          padding: 10px 0;
+          text-align: center;
+          text-transform: uppercase;
+          width: 40px;
+       }
+    }
+    
+  }
+  
+  button {
+    background-color: $red;
+    color: #fff;
+    font-size: 110%;
+    border: 0;
+    width: 100%;
+    position: relative;
+    
+    &:hover {
+      background-color: $green;
+      cursor:pointer;
+    }
+    
+    span {
+      font-size: 200%;
+      position: absolute;
+      top: -3px;
+      right: 10px;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .quiz-container {
+    width: calc(100% - 30px);
+  }
+}
